@@ -1,0 +1,138 @@
+{
+  "vocab-topic-1": [
+    {
+      "word": "be safer",
+      "meaning": "an toàn hơn"
+    },
+    {
+      "word": "have fewer accidents",
+      "meaning": "có ít tai nạn hơn"
+    },
+    {
+      "word": "never think about the weather",
+      "meaning": "không phải suy nghĩ về thời tiết"
+    },
+    {
+      "word": "feel comfortable and relaxed",
+      "meaning": "cảm thấy thoải mái và dễ chịu"
+    },
+    {
+      "word": "take a nap",
+      "meaning": "chợp mắt một lúc"
+    },
+    {
+      "word": "be convenient and fast",
+      "meaning": "thuận tiện và nhanh"
+    },
+    {
+      "word": "travel wherever I want and whenever I want",
+      "meaning": "đi bất kỳ nơi nào và khi nào muốn"
+    },
+    {
+      "word": "be inconvenient",
+      "meaning": "bất tiện"
+    },
+    {
+      "word": "run slowly",
+      "meaning": "chạy chậm"
+    },
+    {
+      "word": "transport infrastructure is in bad conditions",
+      "meaning": "cơ sở giao thông tồi tệ"
+    },
+    {
+      "word": "wait such a long time for the bus",
+      "meaning": "đợi xe buýt lâu"
+    },
+    {
+      "word": "have a higher chance of getting diseases",
+      "meaning": "có cơ hội mắc bệnh cao hơn"
+    },
+    {
+      "word": "be pretty crowded at rush hours",
+      "meaning": "khá đông người lúc cao điểm"
+    },
+    {
+      "word": "public transport systems are quite bad",
+      "meaning": "Hệ thống giao thông công cộng khá tệ"
+    }
+  ],
+  "vocab-topic-2": [
+    {
+      "word": "restaurant",
+      "meaning": "nhà hàng"
+    },
+    {
+      "word": "cinema",
+      "meaning": "rạp chiếu phim"
+    },
+    {
+      "word": "shopping mall",
+      "meaning": "trung tâm mua sắm"
+    },
+    {
+      "word": "skyscraper",
+      "meaning": "tòa nhà chọc trời"
+    },
+    {
+      "word": "The city environment is heavily polluted.",
+      "meaning": "Môi trường đô thị bị ô nhiễm nghiêm trọng."
+    },
+    {
+      "word": "have fewer trees, rivers, mountains",
+      "meaning": "Có ít cây cối, sông, núi hơn"
+    },
+    {
+      "word": "the traffic is always heavy",
+      "meaning": "xe cộ luôn đông đúc."
+    },
+    {
+      "word": "the roads are in bad conditions",
+      "meaning": "đường xá tồi tệ."
+    },
+    {
+      "word": "the cost of living in the city is expensive",
+      "meaning": "chi phí sinh hoạt ở thành phố đắt đỏ"
+    },
+    {
+      "word": "city life is more dangerous",
+      "meaning": "Cuộc sống đô thị nguy hiểm hơn"
+    },
+    {
+      "word": "have more crimes",
+      "meaning": "có nhiều tội phạm hơn"
+    },
+    {
+      "word": "city people are easily attracted by social evils",
+      "meaning": "Người thành phố dễ bị lôi cuốn bởi các tệ nạn xã hội"
+    },
+    {
+      "word": "drinking, drug, gambling",
+      "meaning": "rượu chè, ma túy, bài bạc"
+    },
+    {
+      "word": "city life is interesting",
+      "meaning": "cuộc sống đô thị thú vị"
+    },
+    {
+      "word": "have many entertainments",
+      "meaning": "có nhiều trò giải trí"
+    },
+    {
+      "word": "city life is more convenient",
+      "meaning": "Cuộc sống đô thị thuận tiện hơn."
+    },
+    {
+      "word": "live near hospitals, supermarkets, schools",
+      "meaning": "sống gần bệnh viện, siêu thị, trường học"
+    },
+    {
+      "word": "have higher incomes",
+      "meaning": "có thu nhập cao hơn"
+    },
+    {
+        "word": "have more career opportunities",
+        "meaning": "có nhiều cơ hội nghề nghiệp"
+      }
+  ]
+}
