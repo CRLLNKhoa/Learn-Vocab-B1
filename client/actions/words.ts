@@ -21,11 +21,16 @@ export type TWord = {
   audio: string;
   created_at: string;
   id: number;
+  word_index?: number;
 };
 
 export const addWordIntoDB = async (newWord: TWord): Promise<any> => {
+  const index = new Date().getTime();
   try {
-    const docRef = await addDoc(collection(db, "words"), newWord);
+    const docRef = await addDoc(collection(db, "words"), {
+      ...newWord,
+      word_index: Number(index),
+    });
     return {
       status: 200,
       mess: "Lưu dữ liệu thành công !",

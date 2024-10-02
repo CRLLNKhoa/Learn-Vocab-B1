@@ -23,6 +23,7 @@ export type TTopic = {
   topic_status: boolean;
   topic_created_at: string;
   topic_note: string;
+  topic_index?: number;
 };
 
 const data = [

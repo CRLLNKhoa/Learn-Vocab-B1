@@ -4,8 +4,12 @@ import { addDoc,collection, deleteDoc, doc, getDocs, query, updateDoc, where } f
 
 
 export const addTopicIntoDB = async (newTopic: TTopic): Promise<any> => {
+  const index = new Date().getTime();
     try {
-      const docRef = await addDoc(collection(db, "topics"), newTopic);
+      const docRef = await addDoc(collection(db, "topics"), {
+        ...newTopic,
+        topic_index: Number(index),
+      });
       return {
         status: 200,
         mess: "Lưu dữ liệu thành công !",

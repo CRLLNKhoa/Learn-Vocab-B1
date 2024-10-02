@@ -16,6 +16,7 @@ function AddTopic() {
 
   const handleAddTopic = async () => {
     const id = String(Math.floor(Math.random() * 100000));
+    const index = new Date().getTime()
 
     if (topic_name.trim() === "") {
       toast.error("Nhập chưa đầy đủ thông tin !");
@@ -27,6 +28,7 @@ function AddTopic() {
       topic_note: `Đã thêm vào lúc: ${currentDateTime}`,
       topic_status: true,
       topic_created_at: currentDateTime,
+      topic_index: index
     });
     if (request.status === 200) {
       addTopic({
@@ -35,6 +37,7 @@ function AddTopic() {
         topic_note: `Đã thêm vào lúc: ${currentDateTime}`,
         topic_status: true,
         topic_created_at: currentDateTime,
+        topic_index: index
       });
       setIsShow(false);
       toast.success("Đã thêm chủ đề !");

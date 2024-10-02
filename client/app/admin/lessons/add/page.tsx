@@ -31,6 +31,7 @@ function AddPage() {
     lesson_content: [],
     lesson_created_at: "",
     lesson_word: [],
+    lesson_image: "",
   });
   const [listWord, setListWord] = useState<TWord[]>([]);
   const [isLoading,setIsLoading] = useState(false)
@@ -171,6 +172,19 @@ function AddPage() {
             value={lesson.lesson_description}
             onChange={(e) =>
               setLesson({ ...lesson, lesson_description: e.target.value })
+            }
+            type="text"
+            className="border rounded-md px-4 py-2 outline-none"
+            placeholder="Nhập ..."
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <p className="font-semibold">Ảnh đại diện: </p>
+          <input
+            value={lesson.lesson_image}
+            onChange={(e) =>
+              setLesson({ ...lesson, lesson_image: e.target.value })
             }
             type="text"
             className="border rounded-md px-4 py-2 outline-none"

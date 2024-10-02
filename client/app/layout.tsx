@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="vi">
       <body
         className={cn(
-          "min-h-screen bg-background antialiased relative flex flex-col bg-slate-100",
+          "min-h-screen bg-background antialiased relative flex flex-col bg-slate-100 pb-8",
           GeistSans.className
         )}
       >

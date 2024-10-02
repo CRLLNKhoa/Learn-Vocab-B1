@@ -11,7 +11,7 @@ import { RiSettings4Fill } from "react-icons/ri";
 function Header() {
     const pathname = usePathname()
   return (
-    <header className="bg-white shadow-lg flex h-[80px] items-center sticky top-0 left-0 right-0">
+    <header className="bg-white shadow-lg flex h-[80px] items-center z-50 sticky top-0 left-0 right-0">
       <div className="max-w-5xl mx-auto flex w-full">
         <div className="flex items-center gap-1 select-none cursor-pointer text-sky-500">
           <MdOutlineGTranslate className="mr-auto size-12" />

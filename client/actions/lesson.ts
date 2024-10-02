@@ -15,7 +15,7 @@ import { TTopic } from "@/app/admin/topics/page";
 export type TLesson = {
   id?: string;
   lesson_id: string;
-  lesson_index?: number
+  lesson_index?: number;
   topic_id: string;
   lesson_name: string;
   lesson_description: string;
@@ -24,11 +24,16 @@ export type TLesson = {
   lesson_created_at: string;
   lesson_word: Array<TWord>;
   lesson_topic?: TTopic;
+  lesson_image?: string;
 };
 
 export const addLessonToDB = async (newLesson: TLesson): Promise<any> => {
+  const index = new Date().getTime();
   try {
-    const docRef = await addDoc(collection(db, "lessons"), newLesson);
+    const docRef = await addDoc(collection(db, "lessons"), {
+      ...newLesson,
+      lesson_index: Number(index),
+    });
     return {
       status: 200,
       mess: "Lưu dữ liệu thành công !",
@@ -43,21 +48,29 @@ export const addLessonToDB = async (newLesson: TLesson): Promise<any> => {
 };
 
 export const getLessionsFromDB = async (): Promise<any> => {
-  const lessonsCollection = collection(db, 'lessons');
+  const lessonsCollection = collection(db, "lessons");
   const lessonsSnapshot = await getDocs(lessonsCollection);
-  const lessons: TLesson[] = lessonsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as TLesson));
+  const lessons: TLesson[] = lessonsSnapshot.docs.map(
+    (doc) => ({ id: doc.id, ...doc.data() } as TLesson)
+  );
 
   const lessonsWithTopics = await Promise.all(
-      lessons.map(async (lesson) => {
-          const topicSnapshot = await getDocs(query(collection(db, 'topics'), where('topic_id', '==', lesson.topic_id)));
-          const topic = topicSnapshot.docs.map(doc => ({ topic_id: doc.id, ...doc.data() } as TTopic))[0];
-          return { ...lesson, lesson_topic: topic }; // Thêm topic vào bài học
-      })
+    lessons.map(async (lesson) => {
+      const topicSnapshot = await getDocs(
+        query(
+          collection(db, "topics"),
+          where("topic_id", "==", lesson.topic_id)
+        )
+      );
+      const topic = topicSnapshot.docs.map(
+        (doc) => ({ topic_id: doc.id, ...doc.data() } as TTopic)
+      )[0];
+      return { ...lesson, lesson_topic: topic }; // Thêm topic vào bài học
+    })
   );
 
   return lessonsWithTopics;
 };
-
 
 export const updateLessonDB = async (lesson: TLesson) => {
   const lessonsRef = collection(db, "lessons"); // Giả sử "lessons" là tên bộ sưu tập
@@ -66,8 +79,11 @@ export const updateLessonDB = async (lesson: TLesson) => {
   try {
     const querySnapshot = await getDocs(q);
 
-    if (querySnapshot.empty) {  
-      return { status: "error", message: "Không tìm thấy tài liệu nào với lesson ID không." };
+    if (querySnapshot.empty) {
+      return {
+        status: "error",
+        message: "Không tìm thấy tài liệu nào với lesson ID không.",
+      };
     }
 
     querySnapshot.forEach(async (doc) => {
@@ -75,10 +91,13 @@ export const updateLessonDB = async (lesson: TLesson) => {
     });
 
     return { status: "success", message: "Đã thay đổi dữ liệu !" };
-  } catch (error:any) {
-    return { status: "error", message: `Lỗi khi thay đổi dữ liệu: ${error.message}` };
+  } catch (error: any) {
+    return {
+      status: "error",
+      message: `Lỗi khi thay đổi dữ liệu: ${error.message}`,
+    };
   }
-}
+};
 
 export const deleteLessonDB = async (lesson_id: string) => {
   const lessonsRef = collection(db, "lessons"); // Giả sử "lessons" là tên bộ súu tập
@@ -88,7 +107,10 @@ export const deleteLessonDB = async (lesson_id: string) => {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      return { status: "error", message: "Không tìm thấy tài liệu nào với lesson ID không." };
+      return {
+        status: "error",
+        message: "Không tìm thấy tài liệu nào với lesson ID không.",
+      };
     }
 
     querySnapshot.forEach(async (doc) => {
@@ -96,7 +118,10 @@ export const deleteLessonDB = async (lesson_id: string) => {
     });
 
     return { status: "success", message: "Tài liệu đã được xóa này !" };
-  } catch (error:any) {       
-    return { status: "error", message: `Lỗi khi xóa tài liệu: ${error.message}` };
+  } catch (error: any) {
+    return {
+      status: "error",
+      message: `Lỗi khi xóa tài liệu: ${error.message}`,
+    };
   }
-}
+};

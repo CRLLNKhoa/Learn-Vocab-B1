@@ -2,31 +2,31 @@
 import React, { useState } from "react";
 import { LuCheckSquare } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
+import { TLesson } from "@/actions/lesson";
 
-function CardTopic() {
+function CardLesson({ lesson }: { lesson: TLesson }) {
   const [isShow, setIsShow] = useState(false);
-  const [isAllow,setIsAllow] = useState(false)
+  const [isAllow,setIsAllow] = useState(true)
   return (
     <>
       <div
         onClick={() => setIsShow(true)}
-        className="border grayscale p-4 rounded-lg flex items-center justify-between cursor-pointer hover:scale-[1.01] hover:shadow-md duration-300"
+        className="border p-4 rounded-lg flex items-center justify-between cursor-pointer hover:scale-[1.01] hover:shadow-md duration-300"
       >
         <div className="flex flex-col">
-          <h1 className="text-xl mb-1 font-semibold">Tiếng anh</h1>
+          <h1 className="text-xl mb-1 font-semibold">{lesson?.lesson_name}</h1>
           <p className="text-md font-semibold text-muted-foreground/80">
-            Tiếng Việt
+            {lesson?.lesson_description}
           </p>
         </div>
 
         <img
           className="size-[76px]"
-          src="https://dinoenglish.app/_next/image?url=%2Fassets%2Fmedia%2Ftopic%2Fimage%2Fgreeting.png&w=1920&q=75"
+          src={lesson?.lesson_image}
           alt=""
         />
       </div>
       <AnimatePresence>
-        {" "}
         {isShow && (
           <div
             className="bg-black/20 fixed top-0 left-0 right-0 bottom-0 
@@ -49,12 +49,12 @@ function CardTopic() {
             >
               <img
                 className="size-[96px] mb-4"
-                src="https://dinoenglish.app/_next/image?url=%2Fassets%2Fmedia%2Ftopic%2Fimage%2Fgreeting.png&w=1920&q=75"
+                src={lesson?.lesson_image}
                 alt=""
               />
-              <h1 className="text-xl font-semibold mb-2">Tiếng anh</h1>
+              <h1 className="text-xl font-semibold mb-2">{lesson?.lesson_name}</h1>
               <p className="text-md font-semibold text-muted-foreground">
-                Tiếng Việt
+              {lesson?.lesson_description}
               </p>
               <button
                 className="flex items-center gap-4 mt-8 bg-sky-500 
@@ -72,4 +72,4 @@ function CardTopic() {
   );
 }
 
-export default CardTopic;
+export default CardLesson;
