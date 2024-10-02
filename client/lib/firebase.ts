@@ -7,7 +7,7 @@ import { FirebaseApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDNP12U0aCBurRdpL9iGaXj6CvwH9RoEvc",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "vocab-11c75.firebaseapp.com",
   projectId: "vocab-11c75",
   storageBucket: "vocab-11c75.appspot.com",
