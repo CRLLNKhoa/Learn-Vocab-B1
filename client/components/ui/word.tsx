@@ -24,6 +24,7 @@ function Word({ word, index }: { word: TWord; index: number }) {
     topic_id: word.topic_id,
     audio: word.audio,
     created_at: word.created_at,
+    id: word.id,
   });
 
   const handleEdit = async () => {
