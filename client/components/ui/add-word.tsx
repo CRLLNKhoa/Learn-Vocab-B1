@@ -38,13 +38,13 @@ function AddWord() {
   const listWord = useWordStore((state: any) => state.listWord);
 
   const handleAddNewWord = async () => {
-    const id = String(Math.floor(Math.random() * 100000))
+    const id = String(Math.floor(Math.random() * 100000));
     if (
       newWord.word.trim() === "" ||
       newWord.mean.trim() === "" ||
       newWord.example.trim() === "" ||
       newWord.topic_id.trim() === "" ||
-      newWord.audio.trim() === "" || 
+      newWord.audio.trim() === "" ||
       newWord.transcription.trim() === ""
     ) {
       toast.error("Nhập chưa đầy đủ thông tin !");
@@ -54,14 +54,14 @@ function AddWord() {
       ...newWord,
       created_at: currentDateTime,
       word_id: id,
-      id: listWord.length + 1
+      id: listWord.length + 1,
     });
     if (request.status === 200) {
       addWord({
         ...newWord,
         word_id: id,
         created_at: currentDateTime,
-        id: listWord.length + 1
+        id: listWord.length + 1,
       });
       setIsShow(false);
       toast.success("Đã thêm chủ đề !");
@@ -96,15 +96,15 @@ function AddWord() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
-              className="bg-white p-4 z-[10000] max-w-lg w-full 
-      rounded-lg shadow-lg"
+              className="bg-white p-4 z-[10000] max-w-3xl w-full 
+      rounded-lg shadow-lg h-[80vh]"
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col h-full overflow-y-auto">
                 <h2 className="font-bold text-xl">Thêm từ vựng mới</h2>
                 <p className="text-sm">
                   Các chủ đề phải biến thức gữp nhất trong bài thi tiếng Anh B1.{" "}
                 </p>
-                <div className="flex flex-col gap-4 mt-4">
+                <div className="h-[80%] flex flex-col gap-4 mt-4 overflow-y-auto">
                   <div className="flex flex-col">
                     <label htmlFor="name" className="font-semibold">
                       Từ vựng:
@@ -126,7 +126,10 @@ function AddWord() {
                     <input
                       value={newWord.transcription}
                       onChange={(e) =>
-                        setNewWord({ ...newWord, transcription: e.target.value })
+                        setNewWord({
+                          ...newWord,
+                          transcription: e.target.value,
+                        })
                       }
                       type="text"
                       className="border rounded-lg p-2"
