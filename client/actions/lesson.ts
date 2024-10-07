@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { TWord } from "./words";
 import { TTopic } from "@/app/admin/topics/page";
+import { TQuestion } from "@/types/questions";
 
 export type TLesson = {
   id?: string;
@@ -20,7 +21,7 @@ export type TLesson = {
   lesson_name: string;
   lesson_description: string;
   lesson_status: boolean;
-  lesson_content: Array<any>;
+  lesson_content: Array<TQuestion>;
   lesson_created_at: string;
   lesson_word: Array<TWord>;
   lesson_topic?: TTopic;
@@ -118,6 +119,36 @@ export const deleteLessonDB = async (lesson_id: string) => {
     });
 
     return { status: "success", message: "Tài liệu đã được xóa này !" };
+  } catch (error: any) {
+    return {
+      status: "error",
+      message: `Lỗi khi xóa tài liệu: ${error.message}`,
+    };
+  }
+};
+
+export const getLessonById = async (lesson_id: string) => {
+  const lessonsRef = collection(db, "lessons"); // Giả sử "lessons" là tên bộ súu tập
+  const q = query(lessonsRef, where("lesson_id", "==", lesson_id));
+
+  try {
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      return {
+        status: "error",
+        message: "Không tìm thấy tài liệu nào với lesson ID không.",
+      };
+    }
+
+    const lesson = querySnapshot.docs.map(
+      (doc) => ({ id: doc.id, ...doc.data() } as TLesson)
+    )[0];
+
+    return {
+      status: "success",
+      lesson: lesson,
+    };
   } catch (error: any) {
     return {
       status: "error",

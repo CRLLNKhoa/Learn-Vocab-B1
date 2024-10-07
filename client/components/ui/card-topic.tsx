@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { LuCheckSquare } from "react-icons/lu";
 import { motion, AnimatePresence } from "framer-motion";
 import { TLesson } from "@/actions/lesson";
+import { useRouter } from "next/navigation";
 
 function CardLesson({ lesson }: { lesson: TLesson }) {
   const [isShow, setIsShow] = useState(false);
   const [isAllow,setIsAllow] = useState(true)
+  const router = useRouter()
+
   return (
     <>
       <div
@@ -56,7 +59,9 @@ function CardLesson({ lesson }: { lesson: TLesson }) {
               <p className="text-md font-semibold text-muted-foreground">
               {lesson?.lesson_description}
               </p>
-              <button
+              <button onClick={() => {
+                router.push(`/learn/${lesson?.lesson_id}`);
+              }}
                 className="flex items-center gap-4 mt-8 bg-sky-500 
             px-4 py-2 rounded-full w-[200px] h-12 text-white justify-center
             font-semibold hover:scale-105 duration-300 hover:bg-sky-400"
